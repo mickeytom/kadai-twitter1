@@ -1,7 +1,7 @@
 <ul class="list-unstyled">
   <% tasks.each do |task| %>
     <li class="media mb-3">
-      <img class="mr-2 rounded" src="<%= gravatar_url(task.user, { size: 50 }) %>" alt="">
+     
       <div class="media-body">
         <div>
           <%= link_to task.user.name, user_path(task.user) %> <span class="text-muted">posted at <%= task.created_at %></span>
@@ -12,7 +12,8 @@
         </div>
         <div>
           <% if current_user == task.user %>
-            <%= link_to "Delete", task, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+            <%= link_to "Delete", task, method: :delete, data: { confirm: "本当に削除していいですか?" }, class: 'btn btn-danger btn-sm' %>
+            <%= link_to "編集", edit_task_path(task), class: 'btn btn-light' %>
           <% end %>
         </div>
       </div>
