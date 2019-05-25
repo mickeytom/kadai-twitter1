@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy, :edit, :update]
-  
+
   def create
     @task = current_user.tasks.build(task_params)
     if @task.save
@@ -22,10 +22,10 @@ class TasksController < ApplicationController
 
 
   def edit
-  end 
+  end
 
-def update
-  # @task.update(task_params)は送られてきたパラメータをupdateしている
+  def update
+    # @task.update(task_params)は送られてきたパラメータをupdateしている
     if @task.update(task_params)
       flash[:success] = 'Taskは正常に更新されました'
       redirect_to root_url
@@ -33,7 +33,7 @@ def update
       flash.now[:danger] = 'Task は更新されませんでした'
       render :edit
     end
-end 
+  end
 
   private
 
